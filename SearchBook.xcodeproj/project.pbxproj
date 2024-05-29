@@ -9,10 +9,13 @@
 /* Begin PBXBuildFile section */
 		BD6C38452C072D4100143665 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38442C072D4100143665 /* AppDelegate.swift */; };
 		BD6C38472C072D4100143665 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38462C072D4100143665 /* SceneDelegate.swift */; };
-		BD6C38492C072D4100143665 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38482C072D4100143665 /* ViewController.swift */; };
 		BD6C384E2C072D4300143665 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD6C384D2C072D4300143665 /* Assets.xcassets */; };
 		BD6C38512C072D4300143665 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD6C384F2C072D4300143665 /* LaunchScreen.storyboard */; };
 		BD6C385C2C072D4300143665 /* SearchBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C385B2C072D4300143665 /* SearchBookTests.swift */; };
+		BD6C38762C07318100143665 /* BookSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38752C07318100143665 /* BookSearchViewController.swift */; };
+		BD6C387B2C0734AB00143665 /* SimpleBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C387A2C0734AB00143665 /* SimpleBook.swift */; };
+		BD6C387D2C0735F300143665 /* SimpleBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C387C2C0735F300143665 /* SimpleBookCell.swift */; };
+		BD6C38802C07361700143665 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C387F2C07361700143665 /* Collection+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,13 +39,16 @@
 		BD6C38412C072D4100143665 /* SearchBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD6C38442C072D4100143665 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD6C38462C072D4100143665 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BD6C38482C072D4100143665 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BD6C384D2C072D4300143665 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD6C38502C072D4300143665 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD6C38522C072D4300143665 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD6C38572C072D4300143665 /* SearchBookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SearchBookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD6C385B2C072D4300143665 /* SearchBookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookTests.swift; sourceTree = "<group>"; };
 		BD6C38612C072D4300143665 /* SearchBookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SearchBookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD6C38752C07318100143665 /* BookSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchViewController.swift; sourceTree = "<group>"; };
+		BD6C387A2C0734AB00143665 /* SimpleBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleBook.swift; sourceTree = "<group>"; };
+		BD6C387C2C0735F300143665 /* SimpleBookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleBookCell.swift; sourceTree = "<group>"; };
+		BD6C387F2C07361700143665 /* Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,9 +98,10 @@
 		BD6C38432C072D4100143665 /* SearchBook */ = {
 			isa = PBXGroup;
 			children = (
+				BD6C387E2C07360A00143665 /* extension */,
+				BD6C38742C07317100143665 /* book-search */,
 				BD6C38442C072D4100143665 /* AppDelegate.swift */,
 				BD6C38462C072D4100143665 /* SceneDelegate.swift */,
-				BD6C38482C072D4100143665 /* ViewController.swift */,
 				BD6C384D2C072D4300143665 /* Assets.xcassets */,
 				BD6C384F2C072D4300143665 /* LaunchScreen.storyboard */,
 				BD6C38522C072D4300143665 /* Info.plist */,
@@ -108,6 +115,24 @@
 				BD6C385B2C072D4300143665 /* SearchBookTests.swift */,
 			);
 			path = SearchBookTests;
+			sourceTree = "<group>";
+		};
+		BD6C38742C07317100143665 /* book-search */ = {
+			isa = PBXGroup;
+			children = (
+				BD6C38752C07318100143665 /* BookSearchViewController.swift */,
+				BD6C387A2C0734AB00143665 /* SimpleBook.swift */,
+				BD6C387C2C0735F300143665 /* SimpleBookCell.swift */,
+			);
+			path = "book-search";
+			sourceTree = "<group>";
+		};
+		BD6C387E2C07360A00143665 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				BD6C387F2C07361700143665 /* Collection+Extensions.swift */,
+			);
+			path = extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,9 +265,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD6C38492C072D4100143665 /* ViewController.swift in Sources */,
+				BD6C387B2C0734AB00143665 /* SimpleBook.swift in Sources */,
+				BD6C387D2C0735F300143665 /* SimpleBookCell.swift in Sources */,
+				BD6C38762C07318100143665 /* BookSearchViewController.swift in Sources */,
 				BD6C38452C072D4100143665 /* AppDelegate.swift in Sources */,
 				BD6C38472C072D4100143665 /* SceneDelegate.swift in Sources */,
+				BD6C38802C07361700143665 /* Collection+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -117,7 +117,8 @@ extension BookSearchViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // TODO: 상세 페이지
+        guard let selectedItem = datas[safe: indexPath.item]?.isbn13 else { return }
+        present(BookDetailViewController(isbn13: selectedItem), animated: true)
     }
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

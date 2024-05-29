@@ -22,6 +22,10 @@
 		BD6C388D2C07406500143665 /* RequestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C388C2C07406500143665 /* RequestState.swift */; };
 		BD6C388F2C07534200143665 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C388E2C07534200143665 /* UILabel+Extensions.swift */; };
 		BD6C38932C0758B700143665 /* ImageAssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38922C0758B700143665 /* ImageAssetManager.swift */; };
+		BD6C38962C075AB200143665 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38952C075AB200143665 /* BookDetailViewController.swift */; };
+		BD6C38982C075AD800143665 /* BookDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38972C075AD800143665 /* BookDetail.swift */; };
+		BD6C389A2C075B0800143665 /* DynamicCodingKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38992C075B0800143665 /* DynamicCodingKeys.swift */; };
+		BD6C389C2C075B9700143665 /* BookDetailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C389B2C075B9700143665 /* BookDetailRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,10 @@
 		BD6C388C2C07406500143665 /* RequestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestState.swift; sourceTree = "<group>"; };
 		BD6C388E2C07534200143665 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		BD6C38922C0758B700143665 /* ImageAssetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAssetManager.swift; sourceTree = "<group>"; };
+		BD6C38952C075AB200143665 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
+		BD6C38972C075AD800143665 /* BookDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetail.swift; sourceTree = "<group>"; };
+		BD6C38992C075B0800143665 /* DynamicCodingKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCodingKeys.swift; sourceTree = "<group>"; };
+		BD6C389B2C075B9700143665 /* BookDetailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +118,7 @@
 		BD6C38432C072D4100143665 /* SearchBook */ = {
 			isa = PBXGroup;
 			children = (
+				BD6C38942C075AA100143665 /* book-detail */,
 				BD6C38812C07391B00143665 /* util */,
 				BD6C38892C073BA700143665 /* property-wrapper */,
 				BD6C387E2C07360A00143665 /* extension */,
@@ -165,6 +174,7 @@
 				BD6C38852C07394600143665 /* APIRequest.swift */,
 				BD6C388C2C07406500143665 /* RequestState.swift */,
 				BD6C38922C0758B700143665 /* ImageAssetManager.swift */,
+				BD6C38992C075B0800143665 /* DynamicCodingKeys.swift */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -175,6 +185,16 @@
 				BD6C388A2C073BC600143665 /* IntFromString.swift */,
 			);
 			path = "property-wrapper";
+			sourceTree = "<group>";
+		};
+		BD6C38942C075AA100143665 /* book-detail */ = {
+			isa = PBXGroup;
+			children = (
+				BD6C38952C075AB200143665 /* BookDetailViewController.swift */,
+				BD6C38972C075AD800143665 /* BookDetail.swift */,
+				BD6C389B2C075B9700143665 /* BookDetailRequest.swift */,
+			);
+			path = "book-detail";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,11 +328,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD6C387B2C0734AB00143665 /* SimpleBook.swift in Sources */,
+				BD6C389A2C075B0800143665 /* DynamicCodingKeys.swift in Sources */,
 				BD6C387D2C0735F300143665 /* SimpleBookCell.swift in Sources */,
 				BD6C388F2C07534200143665 /* UILabel+Extensions.swift in Sources */,
+				BD6C38962C075AB200143665 /* BookDetailViewController.swift in Sources */,
 				BD6C38762C07318100143665 /* BookSearchViewController.swift in Sources */,
+				BD6C38982C075AD800143665 /* BookDetail.swift in Sources */,
 				BD6C38452C072D4100143665 /* AppDelegate.swift in Sources */,
 				BD6C38472C072D4100143665 /* SceneDelegate.swift in Sources */,
+				BD6C389C2C075B9700143665 /* BookDetailRequest.swift in Sources */,
 				BD6C388B2C073BC600143665 /* IntFromString.swift in Sources */,
 				BD6C38862C07394600143665 /* APIRequest.swift in Sources */,
 				BD6C38932C0758B700143665 /* ImageAssetManager.swift in Sources */,

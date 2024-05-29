@@ -34,6 +34,7 @@ final class BookSearchViewController: UICollectionViewController {
         view.backgroundColor = .white
 
         let stackView = UIStackView()
+        stackView.distribution = .fill
         view.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -110,7 +111,7 @@ extension BookSearchViewController: UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SimpleBookCell.reuseIdentifier, for: indexPath)
         if let cell = cell as? SimpleBookCell, let item = datas[safe: indexPath.item] {
-            cell.titleLabel.text = item.title
+            cell.bind(item)
         }
         return cell
     }

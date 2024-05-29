@@ -21,6 +21,7 @@
 		BD6C388B2C073BC600143665 /* IntFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C388A2C073BC600143665 /* IntFromString.swift */; };
 		BD6C388D2C07406500143665 /* RequestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C388C2C07406500143665 /* RequestState.swift */; };
 		BD6C388F2C07534200143665 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C388E2C07534200143665 /* UILabel+Extensions.swift */; };
+		BD6C38932C0758B700143665 /* ImageAssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38922C0758B700143665 /* ImageAssetManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		BD6C388A2C073BC600143665 /* IntFromString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntFromString.swift; sourceTree = "<group>"; };
 		BD6C388C2C07406500143665 /* RequestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestState.swift; sourceTree = "<group>"; };
 		BD6C388E2C07534200143665 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
+		BD6C38922C0758B700143665 /* ImageAssetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAssetManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 			children = (
 				BD6C38852C07394600143665 /* APIRequest.swift */,
 				BD6C388C2C07406500143665 /* RequestState.swift */,
+				BD6C38922C0758B700143665 /* ImageAssetManager.swift */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				BD6C38472C072D4100143665 /* SceneDelegate.swift in Sources */,
 				BD6C388B2C073BC600143665 /* IntFromString.swift in Sources */,
 				BD6C38862C07394600143665 /* APIRequest.swift in Sources */,
+				BD6C38932C0758B700143665 /* ImageAssetManager.swift in Sources */,
 				BD6C388D2C07406500143665 /* RequestState.swift in Sources */,
 				BD6C38802C07361700143665 /* Collection+Extensions.swift in Sources */,
 				BD6C38882C073B7C00143665 /* BookSearchRequest.swift in Sources */,

@@ -42,10 +42,11 @@ final class SimpleBookCell: UICollectionViewCell {
         ])
         
         let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         hStackView.addArrangedSubview(imageView)
         NSLayoutConstraint.activate([
-            imageView.heightAnchor.constraint(lessThanOrEqualTo: contentView.heightAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: 100)
         ])
         self.imageView = imageView
         
@@ -71,7 +72,11 @@ final class SimpleBookCell: UICollectionViewCell {
     }
     
     func bind(_ item: SimpleBook) {
-        imageView.isHidden = true
+        ImageAssetManager().request(item.image.flatMap({ URL(string: $0) })) { [weak self] image in
+            DispatchQueue.main.async {
+                self?.imageView.image = image
+            }
+        }
         titleLabel.setTextHideIfEmpty(item.title)
         subtitleLabel.setTextHideIfEmpty(item.subtitle)
         isbnLabel.setTextHideIfEmpty(item.isbn13.map({ "isbn13: \($0)" }))

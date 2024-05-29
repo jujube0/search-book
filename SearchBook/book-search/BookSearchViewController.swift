@@ -12,15 +12,17 @@ final class BookSearchViewController: UICollectionViewController {
     // MARK: - View
     private var textField: UITextField!
     private var confirmButton: UIButton!
+    private var errorLabel: UILabel!
     
+    private var requestState = RequestState()
     private var datas: [SimpleBook] = []
+    
+    private var recentQuery: String?
     
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
         setupView()
         registerCells()
-        // TODO: remove code
-        datas = SimpleBook.mockDatas
     }
     
     required init?(coder: NSCoder) {
@@ -45,6 +47,18 @@ final class BookSearchViewController: UICollectionViewController {
         stackView.addArrangedSubview(textField)
         self.textField = textField
         
+        let errorLabel = UILabel()
+        errorLabel.translatesAutoresizingMaskIntoConstraints = false
+        errorLabel.isHidden = true
+        view.addSubview(errorLabel)
+        NSLayoutConstraint.activate([
+            errorLabel.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor),
+            errorLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor),
+            errorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            errorLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        self.errorLabel = errorLabel
+        
         let confirmButton = UIButton(type: .system)
         confirmButton.setTitle("확인", for: .normal)
         confirmButton.setTitleColor(.black, for: .normal)
@@ -65,7 +79,16 @@ final class BookSearchViewController: UICollectionViewController {
     
     @objc private func comfirmButtonPressed() {
         textField.resignFirstResponder()
-        // TODO: 서버 요청
+        requestFirstPage()
+    }
+    
+    private func requestFirstPage() {
+        request(page: 1)
+    }
+    
+    private func requestNextPage() {
+        guard requestState.status == .finished(allPagesRead: false) else { return }
+        request(page: requestState.page + 1)
     }
 }
 
@@ -94,5 +117,86 @@ extension BookSearchViewController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO: 상세 페이지
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        // 무한 스크롤
+        if indexPath.item == datas.count - 1 {
+            requestNextPage()
+        }
+    }
+}
+
+// MARK: - Network
+extension BookSearchViewController {
+    private func request(page: Int) {
+        guard requestState.status != .loading else { return }
+        
+        requestState.status = .loading
+        
+        let completion: ((RequestState.Status) -> Void) = { [weak self] status in
+            guard let strongSelf = self else { return }
+            strongSelf.requestState.status = status
+            
+            var errorMessage: String?
+            
+            switch status {
+            case .finished(_):
+                if strongSelf.datas.isEmpty {
+                    errorMessage = "결과를 찾을 수 없음"
+                }
+            default:
+                strongSelf.datas = []
+                strongSelf.requestState.page = 0
+                errorMessage = "실패"
+            }
+            
+            DispatchQueue.main.async {
+                if let errorMessage {
+                    self?.errorLabel.text = errorMessage
+                    self?.errorLabel.isHidden = false
+                } else {
+                    self?.errorLabel.isHidden = true
+                }
+                self?.collectionView.reloadData()
+            }
+        }
+        
+        // 첫번째 페이지라면 새로운 쿼리로 요청
+        let query = page == 1 ? textField.text : recentQuery
+        requestState.page = page
+        recentQuery = query
+        
+        guard let query, !query.isEmpty else {
+            datas = []
+            completion(.finished(allPagesRead: true))
+            return
+        }
+        
+        
+        requestState.requestCancellable = BookSearchRequest(query: query, page: page)
+            .publisher()
+            .sink(receiveCompletion: { result in
+                if case .failure = result {
+                    completion(.failed)
+                }
+            }, receiveValue: { [weak self, completion] response in
+                guard let strongSelf = self else { return }
+                
+                if page == 1 {
+                    strongSelf.datas = response.books ?? []
+                } else {
+                    strongSelf.datas.append(contentsOf: response.books ?? [])
+                }
+                
+                let allPagesRead: Bool
+                if let total = response.total {
+                    allPagesRead = strongSelf.datas.count >= total
+                } else {
+                    allPagesRead = false
+                }
+                
+                completion(.finished(allPagesRead: allPagesRead))
+            })
     }
 }

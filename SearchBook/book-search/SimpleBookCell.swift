@@ -31,7 +31,7 @@ final class SimpleBookCell: UICollectionViewCell {
         backgroundColor = .lightGray
         
         let hStackView = UIStackView()
-        hStackView.alignment = .leading
+        hStackView.alignment = .center
         contentView.addSubview(hStackView)
         hStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -77,9 +77,9 @@ final class SimpleBookCell: UICollectionViewCell {
                 self?.imageView.image = image
             }
         }
-        titleLabel.setTextHideIfEmpty(item.title)
-        subtitleLabel.setTextHideIfEmpty(item.subtitle)
+        titleLabel.setTextHideIfEmpty(item.title.map({ "title: \($0)" }))
+        subtitleLabel.setTextHideIfEmpty(item.subtitle.map({ "subtitle: \($0)"} ))
         isbnLabel.setTextHideIfEmpty(item.isbn13.map({ "isbn13: \($0)" }))
-        priceLabel.setTextHideIfEmpty(item.price)
+        priceLabel.setTextHideIfEmpty(item.price.map({ "price: \($0)" }))
     }
 }

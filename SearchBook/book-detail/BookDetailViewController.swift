@@ -14,10 +14,8 @@ final class BookDetailViewController: UIViewController {
     var cancellable: AnyCancellable?
     
     // MARK: View
-    var imageView: UIImageView!
-    var titleLabel: UILabel!
-    var subtitleLabel: UILabel!
-    var authorLabel: UILabel!
+    var stackView: UIStackView!
+    var errorLabel: UILabel!
     
     init(isbn13: String) {
         self.isbn13 = isbn13
@@ -32,56 +30,117 @@ final class BookDetailViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .white
+        
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(scrollView)
+        NSLayoutConstraint.activate([
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
 
         let stackView = UIStackView()
+        stackView.spacing = 10
         stackView.axis = .vertical
-        view.addSubview(stackView)
+        scrollView.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            stackView.widthAnchor.constraint(equalTo: view.widthAnchor)
         ])
+        self.stackView = stackView
         
-        let imageView = UIImageView()
-        stackView.addArrangedSubview(imageView)
-        self.imageView = imageView
-        
-        let titleLabel = UILabel()
-        stackView.addArrangedSubview(titleLabel)
-        self.titleLabel = titleLabel
-        
-        let subtitleLabel = UILabel()
-        stackView.addArrangedSubview(subtitleLabel)
-        self.subtitleLabel = subtitleLabel
-        
-        let authorLabel = UILabel()
-        stackView.addArrangedSubview(authorLabel)
-        self.authorLabel = authorLabel
+        let errorLabel = UILabel()
+        errorLabel.text = "Failed To Load"
+        errorLabel.translatesAutoresizingMaskIntoConstraints = false
+        errorLabel.isHidden = true
+        view.addSubview(errorLabel)
+        NSLayoutConstraint.activate([
+            errorLabel.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor),
+            errorLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor),
+            errorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            errorLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        self.errorLabel = errorLabel
     }
     
     private func request() {
         cancellable = BookDetailRequest(isbn: isbn13).publisher()
-            .sink(receiveCompletion: { result in
+            .sink(receiveCompletion: { [weak self] result in
                 if case .failure = result {
-                    print("Error")
+                    self?.errorLabel.isHidden = false
                 }
             }, receiveValue: { [weak self] item in
                 DispatchQueue.main.async {
-                    self?.apply(item: item)
+                    guard let strongSelf = self else { return }
+                    strongSelf.errorLabel.isHidden = true
+                    strongSelf.apply(item: item)
                 }
             })
     }
     
     private func apply(item: BookDetail) {
-        ImageAssetManager().request(item.image.flatMap({ URL(string: $0) })) { image in
-            DispatchQueue.main.async { [weak self] in
-                self?.imageView.image = image
+        if let image = item.image, let url = URL(string: image) {
+            let imageView = UIImageView()
+            stackView.addArrangedSubview(imageView)
+            ImageAssetManager().request(url) { image in
+                DispatchQueue.main.async {
+                    imageView.image = image
+                }
             }
         }
         
-        titleLabel.text = item.title
-        subtitleLabel.text = item.subtitle
-        authorLabel.text = item.authors
+        stackView.appendLabel(with: item.title, description: "title")
+        stackView.appendLabel(with: item.subtitle, description: "subtitle")
+        stackView.appendLabel(with: item.authors, description: "authors")
+        stackView.appendLabel(with: item.publisher, description: "publisher")
+        stackView.appendLabel(with: item.isbn10, description: "isbn10")
+        stackView.appendLabel(with: item.isbn13, description: "isbn13")
+        stackView.appendLabel(with: item.pages, description: "pages")
+        stackView.appendLabel(with: item.year, description: "year")
+        stackView.appendLabel(with: item.rating, description: "rating")
+        stackView.appendLabel(with: item.desc, description: "desc")
+        stackView.appendLabel(with: item.price, description: "price")
+        stackView.appendLabel(with: item.url, description: "url")
+        
+        if let pdfDict = item.pdf?.parsedDatas, !pdfDict.isEmpty {
+            stackView.appendLabel(with: "pdfs")
+            pdfDict.forEach { key, value in
+                stackView.appendClickableLabel(with: " -\(key)") { _ in
+                    print("pressed")
+                }
+            }
+        }
+    }
+}
+
+private extension UIStackView {
+    
+    func appendLabel(with text: String?, description: String? = nil) {
+        guard let text, !text.isEmpty else { return }
+        
+        let content: String
+        if let description {
+            content = "\(description): \(text)"
+        } else {
+            content = "\(text)"
+        }
+        
+        let label = UILabel()
+        label.text = content
+        label.numberOfLines = 0
+        addArrangedSubview(label)
+    }
+    
+    func appendClickableLabel(with text: String, pressHandler: @escaping ((UILabel) -> Void)) {
+        let clickableLabel = ClickableLabel()
+        clickableLabel.text = text
+        clickableLabel.pressHandler = pressHandler
+        addArrangedSubview(clickableLabel)
     }
 }

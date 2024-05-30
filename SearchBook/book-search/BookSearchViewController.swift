@@ -44,7 +44,7 @@ final class BookSearchViewController: UICollectionViewController {
         ])
         
         let textField = UITextField()
-        textField.placeholder = "검색어를 입력해주세요"
+        textField.placeholder = "Search"
         stackView.addArrangedSubview(textField)
         self.textField = textField
         
@@ -61,7 +61,7 @@ final class BookSearchViewController: UICollectionViewController {
         self.errorLabel = errorLabel
         
         let confirmButton = UIButton(type: .system)
-        confirmButton.setTitle("확인", for: .normal)
+        confirmButton.setTitle("Confirm", for: .normal)
         confirmButton.setTitleColor(.black, for: .normal)
         confirmButton.setContentHuggingPriority(.required, for: .horizontal)
         confirmButton.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -145,12 +145,12 @@ extension BookSearchViewController {
             switch status {
             case .finished(_):
                 if strongSelf.datas.isEmpty {
-                    errorMessage = "결과를 찾을 수 없음"
+                    errorMessage = "No Result"
                 }
             default:
                 strongSelf.datas = []
                 strongSelf.requestState.page = 0
-                errorMessage = "실패"
+                errorMessage = "Network Failed"
             }
             
             DispatchQueue.main.async {

@@ -9,6 +9,7 @@ import UIKit
 import Combine
 
 final class BookDetailViewController: UIViewController {
+    let urlSession: URLSession
     let isbn13: String
     
     var cancellable: AnyCancellable?
@@ -17,8 +18,9 @@ final class BookDetailViewController: UIViewController {
     var stackView: UIStackView!
     var errorLabel: UILabel!
     
-    init(isbn13: String) {
+    init(isbn13: String, urlSession: URLSession = .shared) {
         self.isbn13 = isbn13
+        self.urlSession = urlSession
         super.init(nibName: nil, bundle: nil)
         setupView()
         request()
@@ -70,7 +72,7 @@ final class BookDetailViewController: UIViewController {
     }
     
     private func request() {
-        cancellable = BookDetailRequest(isbn: isbn13).publisher()
+        cancellable = BookDetailRequest(urlSession: urlSession, isbn: isbn13).publisher()
             .sink(receiveCompletion: { [weak self] result in
                 if case .failure = result {
                     self?.errorLabel.isHidden = false

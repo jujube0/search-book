@@ -9,6 +9,9 @@ import UIKit
 import Combine
 
 final class BookSearchViewController: UICollectionViewController {
+    
+    let urlSession: URLSession
+    
     // MARK: - View
     private var textField: UITextField!
     private var confirmButton: UIButton!
@@ -19,13 +22,16 @@ final class BookSearchViewController: UICollectionViewController {
     
     private var recentQuery: String?
     
-    init() {
+    init(urlSession: URLSession = .shared) {
+        self.urlSession = urlSession
+        
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
         setupView()
         registerCells()
     }
     
     required init?(coder: NSCoder) {
+        self.urlSession = .shared
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
         setupView()
     }
@@ -178,7 +184,7 @@ extension BookSearchViewController {
         }
         
         
-        requestState.requestCancellable = BookSearchRequest(query: query, page: page)
+        requestState.requestCancellable = BookSearchRequest(urlSession: urlSession, query: query, page: page)
             .publisher()
             .sink(receiveCompletion: { result in
                 if case .failure = result {

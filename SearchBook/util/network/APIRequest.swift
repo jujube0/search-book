@@ -18,6 +18,8 @@ enum APIError: Error {
 protocol APIRequest {
     associatedtype ResponseType: Decodable
     
+    var urlSession: URLSession { get }
+    
     var baseURL: URL { get }
     
     func publisher(path: String, parameters: [String: String]?) -> AnyPublisher<ResponseType, APIError>
@@ -31,7 +33,7 @@ extension APIRequest {
         }
         
         let request = URLRequest(url: url)
-        return URLSession.shared.dataTaskPublisher(for: request)
+        return urlSession.dataTaskPublisher(for: request)
             .tryMap { data, response in
                 guard let httpResponse = response as? HTTPURLResponse, 200..<300 ~= httpResponse.statusCode else {
                     throw APIError.invalidResponse

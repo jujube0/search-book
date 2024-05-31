@@ -28,6 +28,7 @@
 		BD6C389C2C075B9700143665 /* BookDetailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C389B2C075B9700143665 /* BookDetailRequest.swift */; };
 		BD6C389E2C0A0C3C00143665 /* ClickableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C389D2C0A0C3B00143665 /* ClickableLabel.swift */; };
 		BD6C38A22C0A16BD00143665 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38A12C0A16BD00143665 /* PDFViewController.swift */; };
+		BD6C38A42C0A26E700143665 /* URLProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38A32C0A26E700143665 /* URLProtocolMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		BD6C389B2C075B9700143665 /* BookDetailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailRequest.swift; sourceTree = "<group>"; };
 		BD6C389D2C0A0C3B00143665 /* ClickableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickableLabel.swift; sourceTree = "<group>"; };
 		BD6C38A12C0A16BD00143665 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
+		BD6C38A32C0A26E700143665 /* URLProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 		BD6C385A2C072D4300143665 /* SearchBookTests */ = {
 			isa = PBXGroup;
 			children = (
+				BD6C38A52C0A26EB00143665 /* util */,
 				BD6C385B2C072D4300143665 /* SearchBookTests.swift */,
 			);
 			path = SearchBookTests;
@@ -201,6 +204,14 @@
 				BD6C38A12C0A16BD00143665 /* PDFViewController.swift */,
 			);
 			path = "book-detail";
+			sourceTree = "<group>";
+		};
+		BD6C38A52C0A26EB00143665 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				BD6C38A32C0A26E700143665 /* URLProtocolMock.swift */,
+			);
+			path = util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,6 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD6C385C2C072D4300143665 /* SearchBookTests.swift in Sources */,
+				BD6C38A42C0A26E700143665 /* URLProtocolMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

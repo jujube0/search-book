@@ -27,6 +27,7 @@
 		BD6C389A2C075B0800143665 /* DynamicCodingKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38992C075B0800143665 /* DynamicCodingKeys.swift */; };
 		BD6C389C2C075B9700143665 /* BookDetailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C389B2C075B9700143665 /* BookDetailRequest.swift */; };
 		BD6C389E2C0A0C3C00143665 /* ClickableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C389D2C0A0C3B00143665 /* ClickableLabel.swift */; };
+		BD6C38A22C0A16BD00143665 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38A12C0A16BD00143665 /* PDFViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		BD6C38992C075B0800143665 /* DynamicCodingKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCodingKeys.swift; sourceTree = "<group>"; };
 		BD6C389B2C075B9700143665 /* BookDetailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailRequest.swift; sourceTree = "<group>"; };
 		BD6C389D2C0A0C3B00143665 /* ClickableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickableLabel.swift; sourceTree = "<group>"; };
+		BD6C38A12C0A16BD00143665 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 				BD6C38972C075AD800143665 /* BookDetail.swift */,
 				BD6C389B2C075B9700143665 /* BookDetailRequest.swift */,
 				BD6C389D2C0A0C3B00143665 /* ClickableLabel.swift */,
+				BD6C38A12C0A16BD00143665 /* PDFViewController.swift */,
 			);
 			path = "book-detail";
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				BD6C38982C075AD800143665 /* BookDetail.swift in Sources */,
 				BD6C38452C072D4100143665 /* AppDelegate.swift in Sources */,
 				BD6C38472C072D4100143665 /* SceneDelegate.swift in Sources */,
+				BD6C38A22C0A16BD00143665 /* PDFViewController.swift in Sources */,
 				BD6C389C2C075B9700143665 /* BookDetailRequest.swift in Sources */,
 				BD6C388B2C073BC600143665 /* IntFromString.swift in Sources */,
 				BD6C38862C07394600143665 /* APIRequest.swift in Sources */,

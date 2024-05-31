@@ -111,8 +111,8 @@ final class BookDetailViewController: UIViewController {
         if let pdfDict = item.pdf?.parsedDatas, !pdfDict.isEmpty {
             stackView.appendLabel(with: "pdfs")
             pdfDict.forEach { key, value in
-                stackView.appendClickableLabel(with: " -\(key)") { _ in
-                    print("pressed")
+                stackView.appendClickableLabel(with: " -\(key)") { [weak self] _ in
+                    self?.present(PDFViewController(urlString: value), animated: true)
                 }
             }
         }

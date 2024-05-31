@@ -44,6 +44,8 @@ final class BookSearchViewController: UICollectionViewController {
         ])
         
         let textField = UITextField()
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
         textField.placeholder = "Search"
         stackView.addArrangedSubview(textField)
         self.textField = textField

@@ -72,7 +72,7 @@ final class SimpleBookCell: UICollectionViewCell {
     }
     
     func bind(_ item: SimpleBook) {
-        ImageAssetManager().request(item.image.flatMap({ URL(string: $0) })) { [weak self] image in
+        ImageAssetManager.shared.request(item.image.flatMap({ URL(string: $0) })) { [weak self] image in
             DispatchQueue.main.async {
                 self?.imageView.image = image
             }

@@ -29,6 +29,8 @@ final class PDFViewController: UIViewController {
     }
     
     private func setupView() {
+        view.backgroundColor = .white
+        
         let pdfView = PDFView()
         pdfView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(pdfView)

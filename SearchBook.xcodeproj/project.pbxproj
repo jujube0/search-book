@@ -11,7 +11,6 @@
 		BD6C38472C072D4100143665 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38462C072D4100143665 /* SceneDelegate.swift */; };
 		BD6C384E2C072D4300143665 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD6C384D2C072D4300143665 /* Assets.xcassets */; };
 		BD6C38512C072D4300143665 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD6C384F2C072D4300143665 /* LaunchScreen.storyboard */; };
-		BD6C385C2C072D4300143665 /* SearchBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C385B2C072D4300143665 /* SearchBookTests.swift */; };
 		BD6C38762C07318100143665 /* BookSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38752C07318100143665 /* BookSearchViewController.swift */; };
 		BD6C387B2C0734AB00143665 /* SimpleBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C387A2C0734AB00143665 /* SimpleBook.swift */; };
 		BD6C387D2C0735F300143665 /* SimpleBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C387C2C0735F300143665 /* SimpleBookCell.swift */; };
@@ -29,17 +28,28 @@
 		BD6C389E2C0A0C3C00143665 /* ClickableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C389D2C0A0C3B00143665 /* ClickableLabel.swift */; };
 		BD6C38A22C0A16BD00143665 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38A12C0A16BD00143665 /* PDFViewController.swift */; };
 		BD6C38A42C0A26E700143665 /* URLProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38A32C0A26E700143665 /* URLProtocolMock.swift */; };
+		BD6C38AB2C0AE3BA00143665 /* BookDetailPdfDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38AA2C0AE3BA00143665 /* BookDetailPdfDecodingTests.swift */; };
+		BD6C38AC2C0AE58600143665 /* BookDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38972C075AD800143665 /* BookDetail.swift */; };
+		BD6C38AD2C0AE61600143665 /* DynamicCodingKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38992C075B0800143665 /* DynamicCodingKeys.swift */; };
+		BD6C38AF2C0AE74400143665 /* PropertyWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38AE2C0AE74400143665 /* PropertyWrapperTests.swift */; };
+		BD6C38B02C0AE74A00143665 /* IntFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C388A2C073BC600143665 /* IntFromString.swift */; };
+		BD6C38B32C0AEDC400143665 /* BookSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38752C07318100143665 /* BookSearchViewController.swift */; };
+		BD6C38B42C0AEDD300143665 /* RequestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C388C2C07406500143665 /* RequestState.swift */; };
+		BD6C38B52C0AEDD900143665 /* SimpleBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C387A2C0734AB00143665 /* SimpleBook.swift */; };
+		BD6C38B62C0AEDEA00143665 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38952C075AB200143665 /* BookDetailViewController.swift */; };
+		BD6C38B72C0AEDF000143665 /* BookDetailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C389B2C075B9700143665 /* BookDetailRequest.swift */; };
+		BD6C38B82C0AEDF200143665 /* ClickableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C389D2C0A0C3B00143665 /* ClickableLabel.swift */; };
+		BD6C38B92C0AEDF500143665 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38A12C0A16BD00143665 /* PDFViewController.swift */; };
+		BD6C38BA2C0AEDF900143665 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38852C07394600143665 /* APIRequest.swift */; };
+		BD6C38BB2C0AEE2000143665 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C387F2C07361700143665 /* Collection+Extensions.swift */; };
+		BD6C38BC2C0AEE2200143665 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C388E2C07534200143665 /* UILabel+Extensions.swift */; };
+		BD6C38BD2C0AEE2A00143665 /* SimpleBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C387C2C0735F300143665 /* SimpleBookCell.swift */; };
+		BD6C38BE2C0AEE2D00143665 /* BookSearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38872C073B7C00143665 /* BookSearchRequest.swift */; };
+		BD6C38BF2C0AEE4300143665 /* ImageAssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38922C0758B700143665 /* ImageAssetManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		BD6C38582C072D4300143665 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BD6C38392C072D4100143665 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BD6C38402C072D4100143665;
-			remoteInfo = SearchBook;
-		};
-		BD6C38622C072D4300143665 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BD6C38392C072D4100143665 /* Project object */;
 			proxyType = 1;
@@ -56,8 +66,6 @@
 		BD6C38502C072D4300143665 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD6C38522C072D4300143665 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD6C38572C072D4300143665 /* SearchBookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SearchBookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BD6C385B2C072D4300143665 /* SearchBookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookTests.swift; sourceTree = "<group>"; };
-		BD6C38612C072D4300143665 /* SearchBookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SearchBookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD6C38752C07318100143665 /* BookSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchViewController.swift; sourceTree = "<group>"; };
 		BD6C387A2C0734AB00143665 /* SimpleBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleBook.swift; sourceTree = "<group>"; };
 		BD6C387C2C0735F300143665 /* SimpleBookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleBookCell.swift; sourceTree = "<group>"; };
@@ -75,6 +83,8 @@
 		BD6C389D2C0A0C3B00143665 /* ClickableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickableLabel.swift; sourceTree = "<group>"; };
 		BD6C38A12C0A16BD00143665 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 		BD6C38A32C0A26E700143665 /* URLProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolMock.swift; sourceTree = "<group>"; };
+		BD6C38AA2C0AE3BA00143665 /* BookDetailPdfDecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailPdfDecodingTests.swift; sourceTree = "<group>"; };
+		BD6C38AE2C0AE74400143665 /* PropertyWrapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyWrapperTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,13 +96,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BD6C38542C072D4300143665 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BD6C385E2C072D4300143665 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -116,7 +119,6 @@
 			children = (
 				BD6C38412C072D4100143665 /* SearchBook.app */,
 				BD6C38572C072D4300143665 /* SearchBookTests.xctest */,
-				BD6C38612C072D4300143665 /* SearchBookUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -142,7 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				BD6C38A52C0A26EB00143665 /* util */,
-				BD6C385B2C072D4300143665 /* SearchBookTests.swift */,
+				BD6C38AA2C0AE3BA00143665 /* BookDetailPdfDecodingTests.swift */,
+				BD6C38AE2C0AE74400143665 /* PropertyWrapperTests.swift */,
 			);
 			path = SearchBookTests;
 			sourceTree = "<group>";
@@ -252,24 +255,6 @@
 			productReference = BD6C38572C072D4300143665 /* SearchBookTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		BD6C38602C072D4300143665 /* SearchBookUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BD6C38712C072D4300143665 /* Build configuration list for PBXNativeTarget "SearchBookUITests" */;
-			buildPhases = (
-				BD6C385D2C072D4300143665 /* Sources */,
-				BD6C385E2C072D4300143665 /* Frameworks */,
-				BD6C385F2C072D4300143665 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BD6C38632C072D4300143665 /* PBXTargetDependency */,
-			);
-			name = SearchBookUITests;
-			productName = SearchBookUITests;
-			productReference = BD6C38612C072D4300143665 /* SearchBookUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -284,10 +269,6 @@
 						CreatedOnToolsVersion = 15.2;
 					};
 					BD6C38562C072D4300143665 = {
-						CreatedOnToolsVersion = 15.2;
-						TestTargetID = BD6C38402C072D4100143665;
-					};
-					BD6C38602C072D4300143665 = {
 						CreatedOnToolsVersion = 15.2;
 						TestTargetID = BD6C38402C072D4100143665;
 					};
@@ -308,7 +289,6 @@
 			targets = (
 				BD6C38402C072D4100143665 /* SearchBook */,
 				BD6C38562C072D4300143665 /* SearchBookTests */,
-				BD6C38602C072D4300143665 /* SearchBookUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -324,13 +304,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BD6C38552C072D4300143665 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BD6C385F2C072D4300143665 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -369,15 +342,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD6C385C2C072D4300143665 /* SearchBookTests.swift in Sources */,
+				BD6C38B52C0AEDD900143665 /* SimpleBook.swift in Sources */,
+				BD6C38BE2C0AEE2D00143665 /* BookSearchRequest.swift in Sources */,
+				BD6C38B72C0AEDF000143665 /* BookDetailRequest.swift in Sources */,
+				BD6C38BC2C0AEE2200143665 /* UILabel+Extensions.swift in Sources */,
+				BD6C38BF2C0AEE4300143665 /* ImageAssetManager.swift in Sources */,
+				BD6C38AB2C0AE3BA00143665 /* BookDetailPdfDecodingTests.swift in Sources */,
+				BD6C38B32C0AEDC400143665 /* BookSearchViewController.swift in Sources */,
 				BD6C38A42C0A26E700143665 /* URLProtocolMock.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BD6C385D2C072D4300143665 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				BD6C38B92C0AEDF500143665 /* PDFViewController.swift in Sources */,
+				BD6C38B62C0AEDEA00143665 /* BookDetailViewController.swift in Sources */,
+				BD6C38B02C0AE74A00143665 /* IntFromString.swift in Sources */,
+				BD6C38AC2C0AE58600143665 /* BookDetail.swift in Sources */,
+				BD6C38AD2C0AE61600143665 /* DynamicCodingKeys.swift in Sources */,
+				BD6C38B82C0AEDF200143665 /* ClickableLabel.swift in Sources */,
+				BD6C38B42C0AEDD300143665 /* RequestState.swift in Sources */,
+				BD6C38AF2C0AE74400143665 /* PropertyWrapperTests.swift in Sources */,
+				BD6C38BD2C0AEE2A00143665 /* SimpleBookCell.swift in Sources */,
+				BD6C38BB2C0AEE2000143665 /* Collection+Extensions.swift in Sources */,
+				BD6C38BA2C0AEDF900143665 /* APIRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,11 +371,6 @@
 			isa = PBXTargetDependency;
 			target = BD6C38402C072D4100143665 /* SearchBook */;
 			targetProxy = BD6C38582C072D4300143665 /* PBXContainerItemProxy */;
-		};
-		BD6C38632C072D4300143665 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BD6C38402C072D4100143665 /* SearchBook */;
-			targetProxy = BD6C38622C072D4300143665 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -629,42 +607,6 @@
 			};
 			name = Release;
 		};
-		BD6C38722C072D4300143665 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MXXC76S558;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jujube0.SearchBookUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SearchBook;
-			};
-			name = Debug;
-		};
-		BD6C38732C072D4300143665 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MXXC76S558;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jujube0.SearchBookUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SearchBook;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -691,15 +633,6 @@
 			buildConfigurations = (
 				BD6C386F2C072D4300143665 /* Debug */,
 				BD6C38702C072D4300143665 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BD6C38712C072D4300143665 /* Build configuration list for PBXNativeTarget "SearchBookUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BD6C38722C072D4300143665 /* Debug */,
-				BD6C38732C072D4300143665 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

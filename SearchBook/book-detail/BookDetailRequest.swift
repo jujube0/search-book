@@ -12,11 +12,9 @@ struct BookDetailRequest: APIRequest {
     typealias ResponseType = BookDetail
     var baseURL: URL = URL(string: "https://api.itbook.store/1.0/books")!
     
-    let urlSession: URLSession
     let isbn: String
     
-    init(urlSession: URLSession, isbn: String) {
-        self.urlSession = urlSession
+    init(isbn: String) {
         self.isbn = isbn
     }
     

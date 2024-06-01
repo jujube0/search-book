@@ -12,12 +12,10 @@ struct BookSearchRequest: APIRequest {
     typealias ResponseType = BookSearchResponse
     var baseURL: URL = URL(string: "https://api.itbook.store/1.0/search")!
     
-    let urlSession: URLSession
     let query: String
     let page: Int
     
-    init(urlSession: URLSession, query: String, page: Int = 0) {
-        self.urlSession = urlSession
+    init(query: String, page: Int = 0) {
         self.query = query
         self.page = page
     }

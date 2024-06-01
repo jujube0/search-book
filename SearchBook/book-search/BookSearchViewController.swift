@@ -10,8 +10,6 @@ import Combine
 
 final class BookSearchViewController: UICollectionViewController, APIRequestable {
     
-    let urlSession: URLSession
-    
     // MARK: - View
     private var textField: UITextField!
     private var confirmButton: UIButton!
@@ -26,16 +24,13 @@ final class BookSearchViewController: UICollectionViewController, APIRequestable
     /// page 에 대한 응답이 비어있을 경우 다음 page 요청을 추가로 보내지 않기 위한 flag
     private(set) var allPageRead = false
     
-    init(urlSession: URLSession = .shared) {
-        self.urlSession = urlSession
-        
+    init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
         setupView()
         registerCells()
     }
     
     required init?(coder: NSCoder) {
-        self.urlSession = .shared
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
         setupView()
     }
@@ -100,7 +95,7 @@ final class BookSearchViewController: UICollectionViewController, APIRequestable
     func requestPublisher(page: Int) -> AnyPublisher<BookSearchResponse, APIError> {
         let query = page == 1 ? textField.text : recentQuery
         recentQuery = query
-        return BookSearchRequest(urlSession: urlSession, query: query ?? "", page: page).publisher()
+        return BookSearchRequest(query: query ?? "", page: page).publisher()
     }
     
     func handleResponse(_ response: BookSearchResponse, page: Int) {

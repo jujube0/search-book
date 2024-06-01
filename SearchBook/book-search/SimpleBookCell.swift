@@ -71,6 +71,11 @@ final class SimpleBookCell: UICollectionViewCell {
         self.priceLabel = priceLabel
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
+    }
+    
     func bind(_ item: SimpleBook) {
         ImageAssetManager.shared.request(item.image.flatMap({ URL(string: $0) })) { [weak self] image in
             DispatchQueue.main.async {

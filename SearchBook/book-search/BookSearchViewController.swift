@@ -101,16 +101,15 @@ final class BookSearchViewController: UICollectionViewController, APIRequestable
     func handleResponse(_ response: BookSearchResponse, page: Int) {
         errorLabel.isHidden = true
         
-        if response.books?.isEmpty ?? true {
-            allPageRead = true
-        } else {
-            allPageRead = false
-        }
-        
         if page == 1 {
-            datas = response.books ?? []
+            collectionView.setContentOffset(.zero, animated: false)
+            datas = []
+        }
+        if let books = response.books, !books.isEmpty {
+            allPageRead = false
+            datas.append(contentsOf: books)
         } else {
-            datas.append(contentsOf: response.books ?? [])
+            allPageRead = true
         }
         
         if datas.isEmpty {

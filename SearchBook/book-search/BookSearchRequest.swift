@@ -35,5 +35,11 @@ struct BookSearchResponse: Decodable {
     var page: Int?
     
     let books: [SimpleBook]?
+    
+    init(total: Int? = nil, page: Int? = nil, books: [SimpleBook]?) {
+        self.books = books
+        self._total = IntFromString(total)
+        self._page = IntFromString(page)
+    }
 }
 

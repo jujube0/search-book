@@ -15,16 +15,16 @@ final class BookSearchViewController: UICollectionViewController, APIRequestable
     // MARK: - View
     private var textField: UITextField!
     private var confirmButton: UIButton!
-    private var errorLabel: UILabel!
+    private(set) var errorLabel: UILabel!
     
     var requestState = RequestState()
     
-    private var datas: [SimpleBook] = []
+    private(set) var datas: [SimpleBook] = []
     
     private var recentQuery: String?
     
     /// page 에 대한 응답이 비어있을 경우 다음 page 요청을 추가로 보내지 않기 위한 flag
-    private var allPageRead = false
+    private(set) var allPageRead = false
     
     init(urlSession: URLSession = .shared) {
         self.urlSession = urlSession

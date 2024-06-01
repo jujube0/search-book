@@ -47,6 +47,8 @@
 		BD6C38BE2C0AEE2D00143665 /* BookSearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38872C073B7C00143665 /* BookSearchRequest.swift */; };
 		BD6C38BF2C0AEE4300143665 /* ImageAssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38922C0758B700143665 /* ImageAssetManager.swift */; };
 		BD6C38CA2C0B244800143665 /* APIRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38C92C0B244800143665 /* APIRequestable.swift */; };
+		BD6C38CC2C0B330C00143665 /* BookSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38CB2C0B330C00143665 /* BookSearchTests.swift */; };
+		BD6C38CD2C0B351500143665 /* APIRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38C92C0B244800143665 /* APIRequestable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,7 @@
 		BD6C38AA2C0AE3BA00143665 /* BookDetailPdfDecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailPdfDecodingTests.swift; sourceTree = "<group>"; };
 		BD6C38AE2C0AE74400143665 /* PropertyWrapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyWrapperTests.swift; sourceTree = "<group>"; };
 		BD6C38C92C0B244800143665 /* APIRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestable.swift; sourceTree = "<group>"; };
+		BD6C38CB2C0B330C00143665 /* BookSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +151,7 @@
 				BD6C38A52C0A26EB00143665 /* util */,
 				BD6C38AA2C0AE3BA00143665 /* BookDetailPdfDecodingTests.swift */,
 				BD6C38AE2C0AE74400143665 /* PropertyWrapperTests.swift */,
+				BD6C38CB2C0B330C00143665 /* BookSearchTests.swift */,
 			);
 			path = SearchBookTests;
 			sourceTree = "<group>";
@@ -350,6 +354,7 @@
 				BD6C38BE2C0AEE2D00143665 /* BookSearchRequest.swift in Sources */,
 				BD6C38B72C0AEDF000143665 /* BookDetailRequest.swift in Sources */,
 				BD6C38BC2C0AEE2200143665 /* UILabel+Extensions.swift in Sources */,
+				BD6C38CC2C0B330C00143665 /* BookSearchTests.swift in Sources */,
 				BD6C38BF2C0AEE4300143665 /* ImageAssetManager.swift in Sources */,
 				BD6C38AB2C0AE3BA00143665 /* BookDetailPdfDecodingTests.swift in Sources */,
 				BD6C38B32C0AEDC400143665 /* BookSearchViewController.swift in Sources */,
@@ -358,6 +363,7 @@
 				BD6C38B62C0AEDEA00143665 /* BookDetailViewController.swift in Sources */,
 				BD6C38B02C0AE74A00143665 /* IntFromString.swift in Sources */,
 				BD6C38AC2C0AE58600143665 /* BookDetail.swift in Sources */,
+				BD6C38CD2C0B351500143665 /* APIRequestable.swift in Sources */,
 				BD6C38AD2C0AE61600143665 /* DynamicCodingKeys.swift in Sources */,
 				BD6C38B82C0AEDF200143665 /* ClickableLabel.swift in Sources */,
 				BD6C38B42C0AEDD300143665 /* RequestState.swift in Sources */,

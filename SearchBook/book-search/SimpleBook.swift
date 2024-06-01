@@ -25,13 +25,3 @@ class SimpleBook: Decodable {
     }
 }
 
-// MARK: - Mock
-extension SimpleBook {
-    static var mockDatas: [SimpleBook] {
-        [SimpleBook(title: "해리포터", subtitle: "불의잔", isbn13: "abc", price: "3000원", image: nil, url: nil),
-         SimpleBook(title: "해리포터2", subtitle: "마법사의 돌", isbn13: "abc", price: "3000원", image: nil, url: nil),
-         SimpleBook(title: "해리포터3", subtitle: "불의잔", isbn13: "abc", price: "3000원", image: nil, url: nil),
-         SimpleBook(title: "해리포터4", subtitle: "마법사의 돌", isbn13: "abc", price: "3000원", image: nil, url: nil),
-         SimpleBook(title: "해리포터5", subtitle: "아즈카반의 죄수", isbn13: "abc", price: "3000원", image: nil, url: nil)]
-    }
-}

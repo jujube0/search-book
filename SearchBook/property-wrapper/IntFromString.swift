@@ -14,6 +14,11 @@ struct IntFromString: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         let stringValue = try container.decode(String.self)
-        wrappedValue = Int(stringValue)
+        let wrappedValue = Int(stringValue)
+        
+        guard let wrappedValue else {
+            throw NSError()
+        }
+        self.wrappedValue = wrappedValue
     }
 }

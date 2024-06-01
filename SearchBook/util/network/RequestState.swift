@@ -12,7 +12,7 @@ struct RequestState {
     enum Status: Equatable {
         case initialized
         case loading
-        case finished(allPagesRead: Bool)
+        case finished
         case failed
     }
     

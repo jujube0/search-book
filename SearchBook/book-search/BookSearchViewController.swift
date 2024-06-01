@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-final class BookSearchViewController: UICollectionViewController {
+final class BookSearchViewController: UICollectionViewController, APIRequestable {
     
     let urlSession: URLSession
     
@@ -17,10 +17,14 @@ final class BookSearchViewController: UICollectionViewController {
     private var confirmButton: UIButton!
     private var errorLabel: UILabel!
     
-    private var requestState = RequestState()
+    var requestState = RequestState()
+    
     private var datas: [SimpleBook] = []
     
     private var recentQuery: String?
+    
+    /// page 에 대한 응답이 비어있을 경우 다음 page 요청을 추가로 보내지 않기 위한 flag
+    private var allPageRead = false
     
     init(urlSession: URLSession = .shared) {
         self.urlSession = urlSession
@@ -91,13 +95,44 @@ final class BookSearchViewController: UICollectionViewController {
         requestFirstPage()
     }
     
-    private func requestFirstPage() {
-        request(page: 1)
+    // MARK: - APIRequestable
+    
+    func requestPublisher(page: Int) -> AnyPublisher<BookSearchResponse, APIError> {
+        let query = page == 1 ? textField.text : recentQuery
+        recentQuery = query
+        return BookSearchRequest(urlSession: urlSession, query: query ?? "", page: page).publisher()
     }
     
-    private func requestNextPage() {
-        guard requestState.status == .finished(allPagesRead: false) else { return }
-        request(page: requestState.page + 1)
+    func handleResponse(_ response: BookSearchResponse, page: Int) {
+        errorLabel.isHidden = true
+        
+        if response.books?.isEmpty ?? true {
+            allPageRead = true
+        } else {
+            allPageRead = false
+        }
+        
+        if page == 1 {
+            datas = response.books ?? []
+        } else {
+            datas.append(contentsOf: response.books ?? [])
+        }
+        
+        if datas.isEmpty {
+            errorLabel.isHidden = false
+            errorLabel.text = "No Results"
+        }
+        
+        collectionView.reloadData()
+    }
+    
+    func handleError(_ error: APIError) {
+        datas = []
+        
+        errorLabel.isHidden = false
+        errorLabel.text = "Error ocurred"
+        
+        collectionView.reloadData()
     }
 }
 
@@ -131,82 +166,8 @@ extension BookSearchViewController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         // 무한 스크롤
-        if indexPath.item == datas.count - 1 {
+        if indexPath.item == datas.count - 1 && !allPageRead {
             requestNextPage()
         }
-    }
-}
-
-// MARK: - Network
-extension BookSearchViewController {
-    private func request(page: Int) {
-        guard requestState.status != .loading else { return }
-        
-        requestState.status = .loading
-        
-        let completion: ((RequestState.Status) -> Void) = { [weak self] status in
-            guard let strongSelf = self else { return }
-            strongSelf.requestState.status = status
-            
-            var errorMessage: String?
-            
-            switch status {
-            case .finished(_):
-                if strongSelf.datas.isEmpty {
-                    errorMessage = "No Result"
-                }
-            default:
-                strongSelf.datas = []
-                strongSelf.requestState.page = 0
-                errorMessage = "Network Failed"
-            }
-            
-            DispatchQueue.main.async {
-                if let errorMessage {
-                    self?.errorLabel.text = errorMessage
-                    self?.errorLabel.isHidden = false
-                } else {
-                    self?.errorLabel.isHidden = true
-                }
-                self?.collectionView.reloadData()
-            }
-        }
-        
-        // 첫번째 페이지라면 새로운 쿼리로 요청
-        let query = page == 1 ? textField.text : recentQuery
-        requestState.page = page
-        recentQuery = query
-        
-        guard let query, !query.isEmpty else {
-            datas = []
-            completion(.finished(allPagesRead: true))
-            return
-        }
-        
-        
-        requestState.requestCancellable = BookSearchRequest(urlSession: urlSession, query: query, page: page)
-            .publisher()
-            .sink(receiveCompletion: { result in
-                if case .failure = result {
-                    completion(.failed)
-                }
-            }, receiveValue: { [weak self, completion] response in
-                guard let strongSelf = self else { return }
-                
-                if page == 1 {
-                    strongSelf.datas = response.books ?? []
-                } else {
-                    strongSelf.datas.append(contentsOf: response.books ?? [])
-                }
-                
-                let allPagesRead: Bool
-                if let total = response.total {
-                    allPagesRead = strongSelf.datas.count >= total
-                } else {
-                    allPagesRead = false
-                }
-                
-                completion(.finished(allPagesRead: allPagesRead))
-            })
     }
 }

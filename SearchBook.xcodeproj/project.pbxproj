@@ -46,6 +46,7 @@
 		BD6C38BD2C0AEE2A00143665 /* SimpleBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C387C2C0735F300143665 /* SimpleBookCell.swift */; };
 		BD6C38BE2C0AEE2D00143665 /* BookSearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38872C073B7C00143665 /* BookSearchRequest.swift */; };
 		BD6C38BF2C0AEE4300143665 /* ImageAssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38922C0758B700143665 /* ImageAssetManager.swift */; };
+		BD6C38CA2C0B244800143665 /* APIRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C38C92C0B244800143665 /* APIRequestable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		BD6C38A32C0A26E700143665 /* URLProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolMock.swift; sourceTree = "<group>"; };
 		BD6C38AA2C0AE3BA00143665 /* BookDetailPdfDecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailPdfDecodingTests.swift; sourceTree = "<group>"; };
 		BD6C38AE2C0AE74400143665 /* PropertyWrapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyWrapperTests.swift; sourceTree = "<group>"; };
+		BD6C38C92C0B244800143665 /* APIRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 				BD6C388C2C07406500143665 /* RequestState.swift */,
 				BD6C38922C0758B700143665 /* ImageAssetManager.swift */,
 				BD6C38992C075B0800143665 /* DynamicCodingKeys.swift */,
+				BD6C38C92C0B244800143665 /* APIRequestable.swift */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				BD6C38452C072D4100143665 /* AppDelegate.swift in Sources */,
 				BD6C38472C072D4100143665 /* SceneDelegate.swift in Sources */,
 				BD6C38A22C0A16BD00143665 /* PDFViewController.swift in Sources */,
+				BD6C38CA2C0B244800143665 /* APIRequestable.swift in Sources */,
 				BD6C389C2C075B9700143665 /* BookDetailRequest.swift in Sources */,
 				BD6C388B2C073BC600143665 /* IntFromString.swift in Sources */,
 				BD6C38862C07394600143665 /* APIRequest.swift in Sources */,

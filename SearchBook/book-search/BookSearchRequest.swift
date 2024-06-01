@@ -12,12 +12,10 @@ struct BookSearchRequest: APIRequest {
     typealias ResponseType = BookSearchResponse
     var baseURL: URL = URL(string: "https://api.itbook.store/1.0/search")!
     
-    let urlSession: URLSession
     let query: String
     let page: Int
     
-    init(urlSession: URLSession, query: String, page: Int = 0) {
-        self.urlSession = urlSession
+    init(query: String, page: Int = 0) {
         self.query = query
         self.page = page
     }
@@ -35,5 +33,11 @@ struct BookSearchResponse: Decodable {
     var page: Int?
     
     let books: [SimpleBook]?
+    
+    init(total: Int? = nil, page: Int? = nil, books: [SimpleBook]?) {
+        self.books = books
+        self._total = IntFromString(total)
+        self._page = IntFromString(page)
+    }
 }
 

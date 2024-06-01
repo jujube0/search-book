@@ -9,7 +9,6 @@ import UIKit
 import Combine
 
 final class BookDetailViewController: UIViewController, APIRequestable {
-    let urlSession: URLSession
     let isbn13: String
     
     var requestState = RequestState()
@@ -18,9 +17,8 @@ final class BookDetailViewController: UIViewController, APIRequestable {
     var stackView: UIStackView!
     var errorLabel: UILabel!
     
-    init(isbn13: String, urlSession: URLSession = .shared) {
+    init(isbn13: String) {
         self.isbn13 = isbn13
-        self.urlSession = urlSession
         super.init(nibName: nil, bundle: nil)
         setupView()
         requestFirstPage()
@@ -75,7 +73,7 @@ final class BookDetailViewController: UIViewController, APIRequestable {
     
     func requestPublisher(page: Int) -> AnyPublisher<BookDetail, APIError> {
         // 단일 페이지
-        BookDetailRequest(urlSession: urlSession, isbn: isbn13).publisher()
+        BookDetailRequest(isbn: isbn13).publisher()
     }
     
     func handleResponse(_ response: BookDetail, page: Int) {

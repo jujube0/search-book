@@ -21,4 +21,8 @@ struct IntFromString: Decodable {
         }
         self.wrappedValue = wrappedValue
     }
+    
+    init(_ wrappedValue: Int?) {
+        self.wrappedValue = wrappedValue
+    }
 }

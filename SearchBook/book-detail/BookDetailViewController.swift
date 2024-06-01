@@ -89,7 +89,7 @@ final class BookDetailViewController: UIViewController, APIRequestable {
         if let image = item.image, let url = URL(string: image) {
             let imageView = UIImageView()
             stackView.addArrangedSubview(imageView)
-            ImageAssetManager().request(url) { image in
+            ImageAssetManager.shared.request(url) { image in
                 DispatchQueue.main.async {
                     imageView.image = image
                 }

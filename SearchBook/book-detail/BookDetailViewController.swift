@@ -8,11 +8,11 @@
 import UIKit
 import Combine
 
-final class BookDetailViewController: UIViewController {
+final class BookDetailViewController: UIViewController, APIRequestable {
     let urlSession: URLSession
     let isbn13: String
     
-    var cancellable: AnyCancellable?
+    var requestState = RequestState()
     
     // MARK: View
     var stackView: UIStackView!
@@ -23,7 +23,7 @@ final class BookDetailViewController: UIViewController {
         self.urlSession = urlSession
         super.init(nibName: nil, bundle: nil)
         setupView()
-        request()
+        requestFirstPage()
     }
     
     required init?(coder: NSCoder) {
@@ -71,19 +71,20 @@ final class BookDetailViewController: UIViewController {
         self.errorLabel = errorLabel
     }
     
-    private func request() {
-        cancellable = BookDetailRequest(urlSession: urlSession, isbn: isbn13).publisher()
-            .sink(receiveCompletion: { [weak self] result in
-                if case .failure = result {
-                    self?.errorLabel.isHidden = false
-                }
-            }, receiveValue: { [weak self] item in
-                DispatchQueue.main.async {
-                    guard let strongSelf = self else { return }
-                    strongSelf.errorLabel.isHidden = true
-                    strongSelf.apply(item: item)
-                }
-            })
+    // MARK: - APIRequestable
+    
+    func requestPublisher(page: Int) -> AnyPublisher<BookDetail, APIError> {
+        // 단일 페이지
+        BookDetailRequest(urlSession: urlSession, isbn: isbn13).publisher()
+    }
+    
+    func handleResponse(_ response: BookDetail, page: Int) {
+        errorLabel.isHidden = true
+        apply(item: response)
+    }
+    
+    func handleError(_ error: APIError) {
+        errorLabel.isHidden = false
     }
     
     private func apply(item: BookDetail) {

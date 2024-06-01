@@ -17,6 +17,13 @@ final class BookSearchViewController: UICollectionViewController, APIRequestable
     
     var requestState = RequestState()
     
+    // MARK: - CollectionView
+    private var dataSource: UICollectionViewDiffableDataSource<Section, SimpleBook.ID>!
+    
+    private enum Section: Int {
+        case main
+    }
+    
     private(set) var datas: [SimpleBook] = []
     
     private var recentQuery: String?
@@ -27,12 +34,13 @@ final class BookSearchViewController: UICollectionViewController, APIRequestable
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
         setupView()
-        registerCells()
+        configureDataSource()
     }
     
     required init?(coder: NSCoder) {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
         setupView()
+        configureDataSource()
     }
     
     private func setupView() {
@@ -117,7 +125,14 @@ final class BookSearchViewController: UICollectionViewController, APIRequestable
             errorLabel.text = "No Results"
         }
         
-        collectionView.reloadData()
+        reloadData()
+    }
+    
+    private func reloadData() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, SimpleBook.ID>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(datas.map({ $0.id }), toSection: .main)
+        dataSource.applySnapshotUsingReloadData(snapshot)
     }
     
     func handleError(_ error: APIError) {
@@ -133,24 +148,22 @@ final class BookSearchViewController: UICollectionViewController, APIRequestable
 // MARK: - CollectionView
 extension BookSearchViewController: UICollectionViewDelegateFlowLayout {
     
-    private func registerCells() {
-        collectionView.register(SimpleBookCell.self, forCellWithReuseIdentifier: SimpleBookCell.reuseIdentifier)
+    private func configureDataSource() {
+        
+        let cellRegistration = UICollectionView.CellRegistration<SimpleBookCell, SimpleBook> { cell, indexPath, book in
+            cell.bind(book)
+        }
+        
+        dataSource = .init(collectionView: collectionView) { [weak self] collectionView, indexPath, identifier -> UICollectionViewCell in
+            let item = self?.datas[safe: indexPath.item]
+            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: item)
+        }
+        
+        collectionView.dataSource = dataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: 200)
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        datas.count
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SimpleBookCell.reuseIdentifier, for: indexPath)
-        if let cell = cell as? SimpleBookCell, let item = datas[safe: indexPath.item] {
-            cell.bind(item)
-        }
-        return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
